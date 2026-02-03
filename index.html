@@ -971,7 +971,7 @@
       <p class="text-center text-gray-600 mb-6">代碼一～五（共 5 關）</p>
       <div class="mb-6">
        <label class="block text-elder font-medium text-gray-700 mb-2">代碼</label>
-     
+ <input id="unlock-code" inputmode="numeric" maxlength="4"  class="w-full p-4 text-elder-lg text-center rounded-2xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none tracking-widest" onkeypress="if(event.key==='Enter') unlockWithCode()">
       <div class="space-y-3 mb-4">
        <button onclick="unlockWithCode()" class="w-full btn-elder bg-purple-600 text-white font-bold hover:bg-purple-700">🚀 開始</button>
        <button onclick="closeCodeUnlock()" class="w-full btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500">⬅️ 返回公園</button>
