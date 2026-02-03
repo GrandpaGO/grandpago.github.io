@@ -429,7 +429,7 @@
        <p class="text-elder font-bold text-gray-700 mb-3">選擇既有帳號</p>
        <div id="account-picker-list" class="space-y-3"></div>
       </div>
-      <button onclick="saveNameAndEnter()" class="w-full btn-elder bg-green-600 text-black font-bold hover:bg-green-700 transition-colors"> 🚀 開始使用 </button>
+      <button onclick="saveNameAndEnter()" class="w-full btn-elder bg-green-600 text-white font-bold hover:bg-green-700 transition-colors"> 🚀 開始使用 </button>
       <div id="login-error" class="hidden text-center text-red-500 text-elder"></div>
      </div>
 
@@ -439,7 +439,7 @@
     <header class="bg-gradient-to-r from-green-600 to-green-700 text-white p-4 shadow-lg">
      <div class="flex items-center justify-between">
       <div class="flex items-center gap-3"><span class="text-4xl">🥬</span>
-       <div> 
+       <div>
         <h1 id="app-title" class="text-elder-lg font-bold">Grandpa GO</h1>
         <p class="text-lg opacity-90">歡迎 <span id="user-name">用戶</span></p>
        </div>
@@ -826,10 +826,10 @@
        <div class="space-y-3"><button id="arithmetic-start-btn" onclick="startArithmeticGame()" class="btn-elder bg-purple-600 text-white font-bold hover:bg-purple-700 w-full"> 🎮 開始遊戲 </button> <button onclick="backToGameMenu()" class="btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500 w-full"> ⬅️ 返回選單 </button>
        </div>
       </div>
-     </div><!-- 水果配對遊戲 -->
+     </div><!-- 顏色配對遊戲 -->
      <div id="color-game" class="hidden bg-white rounded-3xl shadow-xl p-6 mb-6">
-      <h2 class="text-elder-lg font-bold text-center text-pink-700 mb-6">🎨 水果配對遊戲</h2>
-      <p class="text-elder text-center text-gray-600 mb-6">點擊相同的水果配對！</p>
+      <h2 class="text-elder-lg font-bold text-center text-pink-700 mb-6">🎨 顏色配對遊戲</h2>
+      <p class="text-elder text-center text-gray-600 mb-6">點擊相同的顏色配對！</p>
       <div id="color-content" class="hidden text-center space-y-6">
        <p class="text-elder text-gray-600">得分：<span id="color-score" class="font-bold text-pink-600">0</span></p>
        <div id="color-pairs-container" class="grid grid-cols-4 gap-3 mb-6">
@@ -842,7 +842,7 @@
        <div class="text-6xl mb-4">
         🎨
        </div>
-       <p class="text-elder text-gray-600">點擊卡片配對相同的水果種類</p>
+       <p class="text-elder text-gray-600">點擊卡片配對相同的顏色和名稱</p>
        <div class="space-y-3"><button id="color-start-btn" onclick="startColorGame()" class="btn-elder bg-pink-600 text-white font-bold hover:bg-pink-700 w-full"> 🎮 開始遊戲 </button> <button onclick="backToGameMenu()" class="btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500 w-full"> ⬅️ 返回選單 </button>
        </div>
       </div>
@@ -971,7 +971,8 @@
       <p class="text-center text-gray-600 mb-6">代碼一～五（共 5 關）</p>
       <div class="mb-6">
        <label class="block text-elder font-medium text-gray-700 mb-2">代碼</label>
- <input id="unlock-code" inputmode="numeric" maxlength="4" placeholder="例如：1234" class="w-full p-4 text-elder-lg text-center rounded-2xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none tracking-widest" onkeypress="if(event.key==='Enter') unlockWithCode()">
+       <input id="unlock-code" inputmode="numeric" maxlength="4" placeholder="例如：5824" class="w-full p-4 text-elder-lg text-center rounded-2xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none tracking-widest" onkeypress="if(event.key==='Enter') unlockWithCode()">
+      </div>
       <div class="space-y-3 mb-4">
        <button onclick="unlockWithCode()" class="w-full btn-elder bg-purple-600 text-white font-bold hover:bg-purple-700">🚀 開始</button>
        <button onclick="closeCodeUnlock()" class="w-full btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500">⬅️ 返回公園</button>
@@ -1160,7 +1161,7 @@ const VEGETABLE_POOL = [
     { name: "白蘿蔔", icon: "🥕" }
   ];
 
-
+  
 
   function safeJsonParse(str, fallback) {
     try { return JSON.parse(str); } catch { return fallback; }
