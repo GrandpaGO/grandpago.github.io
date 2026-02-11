@@ -220,9 +220,9 @@
 }
 
 .quiz-option-img{
-  /* Smaller, consistent image size across devices + font scaling */
-  width: clamp(4.5rem, 18vw, 6rem);
-  height: clamp(3.25rem, 12vw, 4.25rem);
+  /* Larger option images for park quiz (better visibility) */
+  width: clamp(7rem, 26vw, 9rem);
+  height: clamp(5rem, 18vw, 6.75rem);
   object-fit: cover;
 }/* OSM 搜尋框（放大字體，適合長輩） */
      .leaflet-control-geocoder {
@@ -485,7 +485,7 @@
     <div class="bg-gradient-to-b from-amber-100 to-green-100 p-6">
      <div class="bg-white rounded-3xl shadow-xl p-6">
       <div class="text-center">
-       <h2 class="text-elder-lg font-bold text-green-700 mb-4">🌱 我的農場</h2>
+       <h2 class="text-elder-lg font-bold text-green-700 mb-4">🌱 我的菜苗</h2>
        <div id="seedling-display" class="text-9xl my-6 animate-float">
         🌱
        </div>
@@ -862,23 +862,23 @@
        <div class="space-y-3"><button id="arithmetic-start-btn" onclick="startArithmeticGame()" class="btn-elder bg-purple-600 text-white font-bold hover:bg-purple-700 w-full"> 🎮 開始遊戲 </button> <button onclick="backToGameMenu()" class="btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500 w-full"> ⬅️ 返回選單 </button>
        </div>
       </div>
-     </div><!-- 水果配對遊戲 -->
+     </div><!-- 顏色配對遊戲 -->
      <div id="color-game" class="hidden bg-white rounded-3xl shadow-xl p-6 mb-6">
-      <h2 class="text-elder-lg font-bold text-center text-pink-700 mb-6">🎨 水果配對遊戲</h2>
-      <p class="text-elder text-center text-gray-600 mb-6">點擊相同的水果配對！</p>
+      <h2 class="text-elder-lg font-bold text-center text-pink-700 mb-6">🎨 顏色配對遊戲</h2>
+      <p class="text-elder text-center text-gray-600 mb-6">點擊相同的顏色配對！</p>
       <div id="color-content" class="hidden text-center space-y-6">
        <p class="text-elder text-gray-600">得分：<span id="color-score" class="font-bold text-pink-600">0</span></p>
        <div id="color-pairs-container" class="grid grid-cols-4 gap-3 mb-6">
        </div>
        <div class="space-y-3">
-        <p id="color-message" class="text-elder text-gray-600">配對所有相同的水果</p><button onclick="backToGameMenu()" class="btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500 w-full"> ⬅️ 返回選單 </button>
+        <p id="color-message" class="text-elder text-gray-600">配對所有相同的顏色</p><button onclick="backToGameMenu()" class="btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500 w-full"> ⬅️ 返回選單 </button>
        </div>
       </div>
       <div id="color-start-view" class="text-center space-y-6">
        <div class="text-6xl mb-4">
         🎨
        </div>
-       <p class="text-elder text-gray-600">點擊卡片配對相同的水果和名稱</p>
+       <p class="text-elder text-gray-600">點擊卡片配對相同的顏色和名稱</p>
        <div class="space-y-3"><button id="color-start-btn" onclick="startColorGame()" class="btn-elder bg-pink-600 text-white font-bold hover:bg-pink-700 w-full"> 🎮 開始遊戲 </button> <button onclick="backToGameMenu()" class="btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500 w-full"> ⬅️ 返回選單 </button>
        </div>
       </div>
@@ -1021,10 +1021,10 @@
 
    <!-- 公園闖關題目頁（動態） -->
    <div id="park-quiz-page" class="hidden min-h-full flex flex-col bg-gradient-to-b from-sky-50 to-indigo-100">
-    <header class="bg-gradient-to-r from-sky-600 to-indigo-600 text-white p-4 shadow-lg">
+    <header class="bg-gradient-to-r from-green-50 to-green-100 text-green-800 p-4 shadow-lg">
      <div class="flex items-center gap-4">
       <button onclick="backToCodeInput()" class="text-4xl">⬅️</button>
-      <h1 class="text-elder-lg font-bold">🧩 公園闖關</h1>
+      <h1 class="text-elder-lg font-bold text-green-800">🧩 公園闖關</h1>
      </div>
     </header>
     <div class="flex-1 p-6">
@@ -1195,7 +1195,7 @@
   }
 
 const VEGETABLE_POOL = [
-    { name: "白蘿蔔", icon: "🥕" }
+    { name: "蘿蔔", icon: "🥕" }
   ];
 
   
@@ -1581,6 +1581,7 @@ updateAllUI();
     // stage transitions
     if (u.seed.progress >= 100) {
       u.seed.progress = 0;
+      u.seed.stage = 0; // 收成後重新種回🌱
       // harvest
       const nextVeg = pickNextVegetable(u);
       if (nextVeg) {
@@ -2537,7 +2538,7 @@ window.checkArithmeticAnswer = function (v, btnEl) {
       type: "input_exact",
       attempts: 3,
       answer: "2026",
-      placeholder: "請輸入答案（例如：2026）",
+      placeholder: "請輸入答案（例如：1234）",
       hint: "提示：四位數",
     },
     q4: {
@@ -2593,6 +2594,8 @@ window.checkArithmeticAnswer = function (v, btnEl) {
     if (!u || typeof u !== "object") return null;
     if (!u.quiz || typeof u.quiz !== "object") u.quiz = {};
     if (!Array.isArray(u.quiz.solved)) u.quiz.solved = [];
+    // Track how many times each park quiz question has been submitted (persisted)
+    if (!u.quiz.attemptCount || typeof u.quiz.attemptCount !== "object") u.quiz.attemptCount = {};
     // Backward-compat: some older saves might not have harvested array etc.
     if (!Array.isArray(u.harvested)) u.harvested = u.harvested ? [].concat(u.harvested) : [];
     if (!u.seed || typeof u.seed !== "object") u.seed = { stage: 0, progress: 0 };
@@ -2615,7 +2618,38 @@ window.checkArithmeticAnswer = function (v, btnEl) {
     return true;
   }
 
-  function setQuizMsg(type, text) {
+  
+
+  // If a user submits the same park quiz question 2+ times (including the 2nd time),
+  // show "你已達過此題" and block any growth reward.
+  function bumpAttemptAndCheckPassed(questionId) {
+    const u = ensureUserQuizStore(loadUser());
+    if (!u) return false;
+    const prev = Number(u.quiz.attemptCount?.[questionId] || 0);
+    const next = prev + 1;
+    u.quiz.attemptCount[questionId] = next;
+    saveUser(u);
+    return next >= 2;
+  }
+
+  function isAttemptPassed(questionId) {
+    const u = ensureUserQuizStore(loadUser());
+    if (!u) return false;
+    const n = Number(u.quiz.attemptCount?.[questionId] || 0);
+    return n >= 2;
+  }
+
+  function showAlreadyPassedModal() {
+    const modal = $("quiz-result-modal");
+    if (!modal) return;
+    const titleEl = $("quiz-result-title");
+    const textEl = $("quiz-result-text");
+    if (titleEl) titleEl.textContent = "你已達過此題";
+    if (textEl) textEl.textContent = "此題已達 2 次作答紀錄，無法再獲得菜苗成長進度。";
+    modal.classList.remove("hidden");
+  }
+
+function setQuizMsg(type, text) {
     const el = $("quiz-msg");
     if (!el) return;
     el.textContent = text;
@@ -2803,6 +2837,11 @@ wrap.appendChild(btn);
 
   function handleImageChoice(idx) {
     if (!currentQuiz) return;
+    // Count submission attempts; if attempts >= 2 (including 2), block and show modal
+    if (bumpAttemptAndCheckPassed(currentQuiz.id)) {
+      showAlreadyPassedModal();
+      return;
+    }
     if (idx === currentQuiz.correctIndex) {
       handleCorrect();
     } else {
@@ -2817,6 +2856,12 @@ wrap.appendChild(btn);
 
     if (!val) {
       setQuizMsg("warn", "⚠️ 請先輸入答案。");
+      return;
+    }
+
+    // Count submission attempts; if attempts >= 2 (including 2), block and show modal
+    if (bumpAttemptAndCheckPassed(currentQuiz.id)) {
+      showAlreadyPassedModal();
       return;
     }
 
@@ -2890,6 +2935,12 @@ window.showParkSelect = function () {
     // Park quiz codes
     const qid = PARK_CODE_TO_Q[code];
     if (qid && PARK_QUIZ[qid]) {
+      // If user has already reached 2+ submissions for this question, block and show modal
+      if (isAttemptPassed(qid)) {
+        showOnlyPage("park-quiz-page");
+        showAlreadyPassedModal();
+        return;
+      }
       showOnlyPage("park-quiz-page");
       renderQuiz(PARK_QUIZ[qid]);
       return;
