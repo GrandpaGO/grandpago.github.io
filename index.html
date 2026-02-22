@@ -491,13 +491,16 @@
         <h1 id="app-title" class="text-elder-lg font-bold">Grandpa GO</h1>
         <p class="text-lg opacity-90">歡迎 <span id="user-name">用戶</span></p>
        </div>
-      </div> <button onclick="showPage(&#39;settings&#39;)" class="text-4xl hover:opacity-80 transition-opacity"> ⚙️ </button>
+      </div> <div class="flex items-center gap-3"><button id="gg-header-box-btn" onclick="GGX.openDailyBox()" class="text-4xl hover:opacity-80 transition-opacity" aria-label="每日神秘箱">🧰</button><button onclick="showPage(&#39;settings&#39;)" class="text-4xl hover:opacity-80 transition-opacity"> ⚙️ </button></div>
      </div>
     </header>
     <div class="bg-gradient-to-b from-amber-100 to-green-100 p-6">
      <div class="bg-white rounded-3xl shadow-xl p-6">
       <div class="text-center">
-       <h2 class="text-elder-lg font-bold text-green-700 mb-4">🌱 我的菜苗</h2>
+       <div class="flex items-start justify-between gap-3 mb-4">
+        <h2 class="text-elder-lg font-bold text-green-700" style="margin:0;">🌱 我的菜苗</h2>
+        <div id="gg-seed-weather-chip" class="hidden rounded-xl px-3 py-2 text-lg font-bold shadow-lg" style="background:linear-gradient(135deg,#e0f2fe,#dcfce7); color:#065f46; white-space:nowrap;">☀️ 晴天</div>
+       </div>
        <div id="seedling-display" class="text-9xl my-6 animate-float">
         🌱
        </div>
@@ -514,8 +517,8 @@
         </div><span id="veg-number" class="text-elder font-bold text-green-600">0/10</span>
        </div>
        <div id="reward-hint" class="mt-4 hidden bg-yellow-100 border-2 border-yellow-400 rounded-xl p-4">
-        <p class="text-elder font-bold text-yellow-700">🎉 恭喜！已集滿10種蔬菜</p>
-        <p class="text-elder text-yellow-600">可至鄰近蔬菜行兌換蔬菜一包</p>
+        <p class="text-elder font-bold text-yellow-700">🎉 恭喜！已收成10根白蘿蔔</p>
+        <p class="text-elder text-yellow-600">可至鄰近蔬菜行兌換白蘿蔔獎勵</p>
        </div>
       </div>
      </div>
@@ -711,7 +714,7 @@
           <div class="park-card p-4 border-l-4 border-green-500">
             <div class="flex items-start justify-between mb-2">
               <div>
-                <h3 class="text-lg font-bold text-green-700">中壢文化園區</h3>
+                <h3 class="text-lg font-bold text-green-700">中壢藝術園區</h3>
                 <p class="text-base text-gray-600">文化園區</p>
               </div>
               <span class="text-3xl">🌳</span>
@@ -780,7 +783,7 @@
           <div class="park-card p-4 border-l-4 border-green-500">
             <div class="flex items-start justify-between mb-2">
               <div>
-                <h3 class="text-lg font-bold text-green-700">夢想公園</h3>
+                <h3 class="text-lg font-bold text-green-700">夢幻公園</h3>
                 <p class="text-base text-gray-600">社區型公園</p>
               </div>
               <span class="text-3xl">🌳</span>
@@ -836,7 +839,7 @@
      </div>
     </header>
     <div class="flex-1 p-6 overflow-y-auto"><!-- 遊戲選單 -->
-     <div id="game-menu" class="space-y-4 mb-6"><button onclick="selectGame(&#39;memory&#39;)" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-3xl shadow-xl p-6 text-center active:scale-95 transition-transform"> <span class="text-6xl block mb-3">🧠</span> <p class="text-elder-lg font-bold">數字記憶遊戲</p><p class="text-lg opacity-90">記住出現的數字順序</p></button> <button onclick="selectGame(&#39;arithmetic&#39;)" class="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-3xl shadow-xl p-6 text-center active:scale-95 transition-transform"> <span class="text-6xl block mb-3">🔢</span> <p class="text-elder-lg font-bold">算術遊戲</p><p class="text-lg opacity-90">快速計算數學題目</p></button> <button onclick="selectGame(&#39;flipcard&#39;)" class="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white rounded-3xl shadow-xl p-6 text-center active:scale-95 transition-transform"> <span class="text-6xl block mb-3">🎴</span> <p class="text-elder-lg font-bold">翻翻樂遊戲</p><p class="text-lg opacity-90">配對相同的水果卡片</p></button>
+     <div id="game-menu" class="space-y-4 mb-6"><button onclick="selectGame(&#39;memory&#39;)" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-3xl shadow-xl p-6 text-center active:scale-95 transition-transform"> <span class="text-6xl block mb-3">🧠</span> <p class="text-elder-lg font-bold">數字記憶遊戲</p><p class="text-lg opacity-90">記住出現的數字順序</p></button> <button onclick="selectGame(&#39;arithmetic&#39;)" class="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white rounded-3xl shadow-xl p-6 text-center active:scale-95 transition-transform"> <span class="text-6xl block mb-3">🔢</span> <p class="text-elder-lg font-bold">算術遊戲</p><p class="text-lg opacity-90">快速計算數學題目</p></button> <button onclick="selectGame(&#39;flipcard&#39;)" class="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white rounded-3xl shadow-xl p-6 text-center active:scale-95 transition-transform"> <span class="text-6xl block mb-3">🎴</span> <p class="text-elder-lg font-bold">翻翻樂遊戲</p><p class="text-lg opacity-90">配對相同的圖像卡片</p></button>
      </div><!-- 數字記憶遊戲 -->
      <div id="memory-game" class="hidden bg-white rounded-3xl shadow-xl p-6 mb-6">
       <h2 class="text-elder-lg font-bold text-center text-blue-700 mb-6">🧠 數字記憶遊戲</h2>
@@ -890,7 +893,7 @@
        <div class="text-6xl mb-4">
         🎨
        </div>
-       <p class="text-elder text-gray-600">點擊卡片配對相同的和名稱</p>
+       <p class="text-elder text-gray-600">點擊卡片配對相同的水果和名稱</p>
        <div class="space-y-3"><button id="color-start-btn" onclick="startColorGame()" class="btn-elder bg-pink-600 text-white font-bold hover:bg-pink-700 w-full"> 🎮 開始遊戲 </button> <button onclick="backToGameMenu()" class="btn-elder bg-gray-400 text-white font-bold hover:bg-gray-500 w-full"> ⬅️ 返回選單 </button>
        </div>
       </div>
@@ -1120,7 +1123,7 @@
 /* Grandpa GO - Clean Fix Pack (v3)
    - 修復頁底顯示程式碼：移除破損/重複腳本，集中為單一腳本
    - 無登入註冊：首次只問姓名
-   - 修復：歡迎(用戶名)、字體大小、服藥提醒儲存、益智遊戲功能
+   - 修復：歡迎(用戶名)、字體大小、服藥提醒儲存、健腦遊戲功能
 */
 (function () {
   "use strict";
@@ -3153,5 +3156,688 @@ window.showParkSelect = function () {
     });
   });
 </script>
+
+<style id="creative-v1-style">
+  .gg-card{background:#fff;border-radius:1rem;padding:1rem;box-shadow:0 6px 14px rgba(0,0,0,.08);margin-bottom:1rem}
+  .gg-badge{display:inline-block;padding:.35rem .6rem;border-radius:999px;background:#eef2ff;font-weight:700;margin:.2rem;font-size:.95rem}
+  .gg-btn{border:none;border-radius:.9rem;padding:.7rem 1rem;font-weight:700;cursor:pointer}
+  .gg-btn:active{transform:scale(.97)}
+  .gg-weather{background:linear-gradient(135deg,#e0f2fe,#dcfce7)}
+  .gg-npc{background:linear-gradient(135deg,#fff7ed,#fef3c7)}
+  .gg-ach{background:linear-gradient(135deg,#faf5ff,#ede9fe)}
+  .gg-box{background:linear-gradient(135deg,#ecfeff,#dbeafe)}
+  .gg-checkin-btn{margin-top:.5rem;width:100%;background:#16a34a;color:white}
+  .gg-mini-btn{margin-top:.5rem;width:100%;background:#7c3aed;color:white}
+  #gg-celebrate-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;display:none}
+  #gg-celebrate-overlay.show{display:block;animation:ggFlash 850ms ease}
+  #gg-celebrate-overlay .gg-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem}
+  #gg-celebrate-overlay .gg-confetti{position:absolute;top:-10px;font-size:1.8rem;animation:ggDrop 1.2s linear forwards}
+  @keyframes ggDrop{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+  @keyframes ggFlash{0%{background:rgba(255,255,255,0)}20%{background:rgba(255,255,180,.6)}100%{background:rgba(255,255,255,0)}}
+  .gg-modal{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9998;display:none;align-items:center;justify-content:center;padding:1rem}
+  .gg-modal.show{display:flex}
+  .gg-modal .panel{background:#fff;max-width:640px;width:100%;border-radius:1rem;padding:1rem;max-height:85vh;overflow:auto}
+  .gg-qopt{display:block;width:100%;text-align:left;margin:.5rem 0;padding:.8rem;border:2px solid #ddd;border-radius:.75rem;background:#fff}
+  .gg-qopt.correct{border-color:#16a34a;background:#f0fdf4}
+  .gg-qopt.wrong{border-color:#dc2626;background:#fef2f2}
+
+  #gg-header-box-btn[disabled]{opacity:.55;pointer-events:none}
+  .gg-chest-overlay{position:fixed;inset:0;background:radial-gradient(circle at 50% 20%,rgba(255,226,138,.16),rgba(0,0,0,.84) 55%),rgba(0,0,0,.82);backdrop-filter:blur(2px);z-index:10000;display:none;align-items:center;justify-content:center;padding:.6rem}
+  .gg-chest-overlay.show{display:flex;animation:ggChestFade .28s ease}
+  @keyframes ggChestFade{from{opacity:0}to{opacity:1}}
+  .gg-chest-panel{width:min(98vw,1100px);height:min(95vh,760px);background:radial-gradient(circle at 50% 20%,#2d2348 0%,#161328 45%,#090b14 100%);border-radius:1.4rem;position:relative;overflow:hidden;box-shadow:0 26px 80px rgba(0,0,0,.62), inset 0 0 0 1px rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.08)}
+  .gg-chest-panel:before,.gg-chest-panel:after{content:'';position:absolute;inset:auto;width:46vmin;height:46vmin;border-radius:999px;filter:blur(35px);opacity:.22;pointer-events:none}
+  .gg-chest-panel:before{left:-8%;top:-10%;background:#8b5cf6}
+  .gg-chest-panel:after{right:-8%;bottom:-18%;background:#22c55e}
+  .gg-chest-door-wrap{position:absolute;inset:0;display:flex;z-index:3;pointer-events:none;perspective:1200px}
+  .gg-door{width:50%;height:100%;position:relative;transition:transform 1s cubic-bezier(.12,.82,.18,1),filter .4s ease;transform-origin:center}
+  .gg-door.left{transform-origin:left center}
+  .gg-door.right{transform-origin:right center}
+  .gg-door .wood{position:absolute;inset:0;background:linear-gradient(180deg,#6b3d1c 0%,#5a3216 34%,#48270f 100%)}
+  .gg-door .wood:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 10px,rgba(0,0,0,.05) 10px 20px)}
+  .gg-door .frame{position:absolute;inset:2.3vmin;border:1.2vmin solid #c99432;border-radius:1rem;box-shadow:inset 0 0 0 2px rgba(255,233,170,.25)}
+  .gg-door .cross{position:absolute;left:50%;top:50%;width:80%;height:80%;transform:translate(-50%,-50%)}
+  .gg-door .cross:before,.gg-door .cross:after{content:'';position:absolute;background:#d5a23f;opacity:.92}
+  .gg-door .cross:before{left:50%;top:0;transform:translateX(-50%);width:1vmin;height:100%}
+  .gg-door .cross:after{top:50%;left:0;transform:translateY(-50%);height:1vmin;width:100%}
+  .gg-door .knob{position:absolute;top:50%;width:1.2rem;height:1.2rem;border-radius:999px;background:radial-gradient(circle at 35% 35%,#fff7c7,#d59a2f 55%,#9f6a19);box-shadow:0 0 0 2px rgba(0,0,0,.16),0 0 18px rgba(255,191,71,.25)}
+  .gg-door.left .knob{right:1rem;transform:translateY(-50%)}
+  .gg-door.right .knob{left:1rem;transform:translateY(-50%)}
+  .gg-chest-overlay.opening .gg-door.left{transform:translateX(-104%) rotateY(20deg);filter:brightness(.9)}
+  .gg-chest-overlay.opening .gg-door.right{transform:translateX(104%) rotateY(-20deg);filter:brightness(.9)}
+  .gg-chest-rays{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .4s ease .35s}
+  .gg-chest-rays:before{content:'';position:absolute;left:50%;top:50%;width:120vmax;height:120vmax;transform:translate(-50%,-50%) rotate(0deg);background:conic-gradient(from 0deg,rgba(255,255,255,0) 0 8deg,rgba(255,215,96,.09) 8deg 16deg,rgba(255,255,255,0) 16deg 28deg,rgba(147,51,234,.08) 28deg 34deg,rgba(255,255,255,0) 34deg 45deg);animation:ggRaySpin 18s linear infinite}
+  .gg-chest-rays:after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,214,120,.18),rgba(255,255,255,0) 58%)}
+  @keyframes ggRaySpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+  .gg-chest-overlay.opening .gg-chest-rays,.gg-chest-overlay.ready .gg-chest-rays{opacity:1}
+  .gg-chest-sparkles{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .4s ease .55s}
+  .gg-chest-sparkles i{position:absolute;font-style:normal;color:#fde68a;filter:drop-shadow(0 0 8px rgba(253,230,138,.45));animation:ggFloatSpark 2.6s ease-in-out infinite}
+  .gg-chest-sparkles i:nth-child(1){left:12%;top:22%;font-size:1.2rem;animation-delay:.1s}
+  .gg-chest-sparkles i:nth-child(2){left:84%;top:18%;font-size:1.5rem;animation-delay:.5s}
+  .gg-chest-sparkles i:nth-child(3){left:20%;top:72%;font-size:1rem;animation-delay:.9s}
+  .gg-chest-sparkles i:nth-child(4){left:74%;top:76%;font-size:1.35rem;animation-delay:1.2s}
+  .gg-chest-sparkles i:nth-child(5){left:48%;top:14%;font-size:1.1rem;animation-delay:1.6s}
+  .gg-chest-sparkles i:nth-child(6){left:51%;top:81%;font-size:1.3rem;animation-delay:2s}
+  @keyframes ggFloatSpark{0%,100%{transform:translateY(0) scale(1);opacity:.55}50%{transform:translateY(-8px) scale(1.12);opacity:1}}
+  .gg-chest-overlay.opening .gg-chest-sparkles,.gg-chest-overlay.ready .gg-chest-sparkles{opacity:1}
+  .gg-chest-content{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.2rem;opacity:0;transition:opacity .45s ease .7s}
+  .gg-chest-overlay.opening .gg-chest-content,.gg-chest-overlay.ready .gg-chest-content{opacity:1}
+  .gg-chest-title{color:#fff;font-weight:900;font-size:2.15rem;letter-spacing:.02em;text-align:center;text-shadow:0 6px 24px rgba(0,0,0,.48)}
+  .gg-chest-sub{color:#d6dcf3;margin-top:.35rem;font-size:1rem;text-align:center}
+  .gg-chest-list{margin-top:1.1rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;width:100%;max-width:860px}
+  .gg-color-chest{position:relative;border:none;border-radius:1.1rem;min-height:12.2rem;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));box-shadow:0 18px 35px rgba(0,0,0,.28),inset 0 0 0 1px rgba(255,255,255,.08);display:flex;align-items:flex-end;justify-content:center;padding:.7rem .7rem .85rem;cursor:pointer;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;overflow:hidden}
+  .gg-color-chest:hover{transform:translateY(-3px) scale(1.015);filter:brightness(1.05);box-shadow:0 24px 42px rgba(0,0,0,.35),0 0 30px rgba(255,215,96,.08)}
+  .gg-color-chest:active{transform:translateY(-1px) scale(.985)}
+  .gg-color-chest .label{position:relative;z-index:2;font-size:1rem;font-weight:800;color:#f8fafc;background:rgba(15,23,42,.55);padding:.3rem .65rem;border-radius:999px;border:1px solid rgba(255,255,255,.12)}
+  .gg-color-chest .icon{display:none}
+  .gg-color-chest .slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1}
+  .gg-color-chest .chest3d{position:relative;width:80%;max-width:200px;aspect-ratio:1.18/1;transform:translateY(-2px)}
+  .gg-color-chest .chest3d .front-base{position:absolute;left:7%;right:18%;bottom:8%;height:46%;border-radius:0 0 12px 12px;background:linear-gradient(180deg,var(--wood1),var(--wood2));box-shadow:inset 0 -8px 12px rgba(0,0,0,.18)}
+  .gg-color-chest .chest3d .front-lid{position:absolute;left:7%;right:18%;top:7%;height:34%;border-radius:44px 44px 14px 14px / 34px 34px 12px 12px;background:linear-gradient(180deg,var(--woodTop1),var(--woodTop2));box-shadow:inset 0 -8px 12px rgba(0,0,0,.14)}
+  .gg-color-chest .chest3d .side-base{position:absolute;right:6%;bottom:11%;width:13%;height:41%;transform:skewY(-18deg);border-radius:0 10px 10px 0;background:linear-gradient(180deg,var(--woodSide1),var(--woodSide2))}
+  .gg-color-chest .chest3d .side-lid{position:absolute;right:6%;top:12%;width:13%;height:28%;transform:skewY(-18deg);border-radius:0 20px 10px 0;background:linear-gradient(180deg,var(--woodSideTop1),var(--woodSideTop2))}
+  .gg-color-chest .chest3d .trim1,.gg-color-chest .chest3d .trim2,.gg-color-chest .chest3d .trim3,.gg-color-chest .chest3d .trim4,.gg-color-chest .chest3d .trim5{position:absolute;background:linear-gradient(180deg,var(--metal1),var(--metal2));box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+  .gg-color-chest .chest3d .trim1{left:5%;right:17%;top:38%;height:9%;border-radius:7px}
+  .gg-color-chest .chest3d .trim2{left:16%;top:6%;width:8%;height:80%;border-radius:7px}
+  .gg-color-chest .chest3d .trim3{left:41%;top:4%;width:8%;height:82%;border-radius:7px}
+  .gg-color-chest .chest3d .trim4{left:66%;top:4%;width:8%;height:82%;border-radius:7px}
+  .gg-color-chest .chest3d .trim5{right:5%;top:9%;width:10%;height:74%;transform:skewY(-18deg);border-radius:0 8px 8px 0}
+  .gg-color-chest .chest3d .lock{position:absolute;left:39%;top:44%;width:20%;height:17%;background:linear-gradient(180deg,var(--metal1),var(--metal2));clip-path:polygon(10% 10%,90% 10%,85% 85%,50% 100%,15% 85%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+  .gg-color-chest .chest3d .keyhole{position:absolute;left:48%;top:49%;width:4%;height:5%;background:#3a2a10;border-radius:2px}
+  .gg-color-chest .chest3d .rivet{position:absolute;width:4.6%;aspect-ratio:1;border-radius:999px;background:radial-gradient(circle at 35% 30%,#fff9d0,var(--metal1) 38%,var(--metal2) 75%);box-shadow:0 0 0 1px rgba(0,0,0,.18)}
+  .gg-color-chest .chest3d .r1{left:14%;top:13%}.gg-color-chest .chest3d .r2{left:39%;top:11%}.gg-color-chest .chest3d .r3{left:64%;top:11%}.gg-color-chest .chest3d .r4{left:12%;top:40%}.gg-color-chest .chest3d .r5{left:36%;top:40%}.gg-color-chest .chest3d .r6{left:61%;top:40%}.gg-color-chest .chest3d .r7{left:13%;top:74%}.gg-color-chest .chest3d .r8{left:37%;top:74%}.gg-color-chest .chest3d .r9{left:61%;top:74%}.gg-color-chest .chest3d .r10{left:80%;top:17%}.gg-color-chest .chest3d .r11{left:80%;top:44%}.gg-color-chest .chest3d .r12{left:80%;top:70%}
+  .gg-color-chest .shine{position:absolute;inset:-35% 45% auto -5%;height:80%;background:linear-gradient(110deg,rgba(255,255,255,.0),rgba(255,255,255,.18),rgba(255,255,255,.0));transform:rotate(2deg);pointer-events:none}
+  .gg-color-chest:hover .shine{animation:ggChestShine .9s ease}
+  @keyframes ggChestShine{from{transform:translateX(-40%) rotate(2deg)}to{transform:translateX(120%) rotate(2deg)}}
+  .gg-color-chest.purple{--wood1:#7f4ad7;--wood2:#512596;--woodTop1:#9f67ff;--woodTop2:#6b31c8;--woodSide1:#6e39c7;--woodSide2:#431f83;--woodSideTop1:#9866f4;--woodSideTop2:#622ab8;--metal1:#f6d474;--metal2:#bd7f24}
+  .gg-color-chest.green{--wood1:#2bbf6f;--wood2:#157d47;--woodTop1:#48db8b;--woodTop2:#20995f;--woodSide1:#1faa63;--woodSide2:#10653b;--woodSideTop1:#3fd485;--woodSideTop2:#1f8956;--metal1:#f8de92;--metal2:#c6902d}
+  .gg-color-chest.yellow{--wood1:#f1b51f;--wood2:#bf7a12;--woodTop1:#ffd24b;--woodTop2:#e59e18;--woodSide1:#df9b17;--woodSide2:#a76710;--woodSideTop1:#ffd64f;--woodSideTop2:#d48d12;--metal1:#fff0ba;--metal2:#d39b33}
+  .gg-color-chest[disabled]{opacity:.62;filter:saturate(.65);cursor:not-allowed}
+  .gg-chest-close{position:absolute;top:.8rem;right:.8rem;z-index:6;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:.9rem;padding:.55rem .85rem;font-weight:800;backdrop-filter:blur(4px);cursor:pointer}
+  .gg-chest-close:hover{background:rgba(255,255,255,.22)}
+  .gg-chest-result{margin-top:1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff;padding:.9rem 1rem;border-radius:1rem;max-width:760px;width:100%;text-align:center;box-shadow:0 10px 22px rgba(0,0,0,.18)}
+  @media (max-width:640px){
+    .gg-chest-panel{height:min(95vh,820px)}
+    .gg-chest-title{font-size:1.55rem}
+    .gg-chest-sub{font-size:.95rem}
+    .gg-chest-list{grid-template-columns:1fr;max-width:350px;gap:.8rem}
+    .gg-color-chest{min-height:7.4rem;padding:.4rem .6rem .6rem;justify-content:flex-start}
+    .gg-color-chest .chest3d{width:54%;max-width:none;transform:translate(-18%,6px) scale(.9)}
+    .gg-color-chest .label{position:absolute;right:.6rem;bottom:.65rem}
+  }
+
+
+</style>
+<div id="gg-celebrate-overlay"><div class="gg-center">🎉</div></div>
+
+<div id="gg-chest-modal" class="gg-chest-overlay" aria-hidden="true" onclick="if(event.target===this) GGX.closeDailyBoxModal()">
+  <div class="gg-chest-panel">
+    <button type="button" class="gg-chest-close" onclick="event.stopPropagation(); GGX.closeDailyBoxModal()">✕ 關閉</button>
+    <div class="gg-chest-rays"></div>
+    <div class="gg-chest-sparkles"><i>✦</i><i>✨</i><i>✦</i><i>✨</i><i>✦</i><i>✨</i></div>
+    <div class="gg-chest-door-wrap" aria-hidden="true">
+      <div class="gg-door left"><div class="wood"></div><div class="frame"></div><div class="cross"></div><div class="knob"></div></div>
+      <div class="gg-door right"><div class="wood"></div><div class="frame"></div><div class="cross"></div><div class="knob"></div></div>
+    </div>
+    <div class="gg-chest-content">
+      <div class="gg-chest-title">🎁 神秘寶庫已開啟</div>
+      <div class="gg-chest-sub">請選擇一個寶箱</div>
+      <div class="gg-chest-list">
+        <button class="gg-color-chest purple" type="button" onclick="GGX.chooseDailyChest('purple')"><span class="slot"><span class="chest3d"><span class="front-base"></span><span class="front-lid"></span><span class="side-base"></span><span class="side-lid"></span><span class="trim1"></span><span class="trim2"></span><span class="trim3"></span><span class="trim4"></span><span class="trim5"></span><span class="lock"></span><span class="keyhole"></span><span class="rivet r1"></span><span class="rivet r2"></span><span class="rivet r3"></span><span class="rivet r4"></span><span class="rivet r5"></span><span class="rivet r6"></span><span class="rivet r7"></span><span class="rivet r8"></span><span class="rivet r9"></span><span class="rivet r10"></span><span class="rivet r11"></span><span class="rivet r12"></span></span><span class="shine"></span></span><span class="label">寶箱 1</span></button>
+        <button class="gg-color-chest green" type="button" onclick="GGX.chooseDailyChest('green')"><span class="slot"><span class="chest3d"><span class="front-base"></span><span class="front-lid"></span><span class="side-base"></span><span class="side-lid"></span><span class="trim1"></span><span class="trim2"></span><span class="trim3"></span><span class="trim4"></span><span class="trim5"></span><span class="lock"></span><span class="keyhole"></span><span class="rivet r1"></span><span class="rivet r2"></span><span class="rivet r3"></span><span class="rivet r4"></span><span class="rivet r5"></span><span class="rivet r6"></span><span class="rivet r7"></span><span class="rivet r8"></span><span class="rivet r9"></span><span class="rivet r10"></span><span class="rivet r11"></span><span class="rivet r12"></span></span><span class="shine"></span></span><span class="label">寶箱 2</span></button>
+        <button class="gg-color-chest yellow" type="button" onclick="GGX.chooseDailyChest('yellow')"><span class="slot"><span class="chest3d"><span class="front-base"></span><span class="front-lid"></span><span class="side-base"></span><span class="side-lid"></span><span class="trim1"></span><span class="trim2"></span><span class="trim3"></span><span class="trim4"></span><span class="trim5"></span><span class="lock"></span><span class="keyhole"></span><span class="rivet r1"></span><span class="rivet r2"></span><span class="rivet r3"></span><span class="rivet r4"></span><span class="rivet r5"></span><span class="rivet r6"></span><span class="rivet r7"></span><span class="rivet r8"></span><span class="rivet r9"></span><span class="rivet r10"></span><span class="rivet r11"></span><span class="rivet r12"></span></span><span class="shine"></span></span><span class="label">寶箱 3</span></button>
+      </div>
+      <div id="gg-chest-result" class="gg-chest-result hidden"></div>
+    </div>
+  </div>
+</div>
+
+<div id="gg-park-modal" class="gg-modal"><div class="panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+    <h3 style="font-size:1.25rem;font-weight:700">🧩 每日公園挑戰（3題）</h3>
+    <button class="gg-btn" style="background:#e5e7eb" onclick="GGX.closeParkQuiz()">關閉</button>
+  </div>
+  <div id="gg-park-content" style="margin-top:.5rem"></div>
+</div></div>
+<script id="creative-v1-script">
+(function(){
+  const GGX = window.GGX = window.GGX || {};
+  const TODAY = ()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+  const $ = (id)=>document.getElementById(id);
+  const q = (sel,root=document)=>root.querySelector(sel);
+  const qa = (sel,root=document)=>Array.from(root.querySelectorAll(sel));
+  const activeId = ()=>localStorage.getItem('grandpa_go_active_account_v1');
+  const userKey = ()=>{ const id=activeId(); return id?`grandpa_go_acc_${id}__user_v3`:null; };
+  const loadUser = ()=>{ try{ const k=userKey(); return k?JSON.parse(localStorage.getItem(k)||'null'):null; }catch{return null;} };
+  const saveUser = (u)=>{ const k=userKey(); if(k) localStorage.setItem(k, JSON.stringify(u)); };
+
+  GGX.vegPool = [
+    {name:"白蘿蔔", icon:"🥕", rarity:"固定"},
+  ];
+  GGX.parkSeeds = {
+    "復興公園":"復興白蘿蔔","元生公園":"元生白蘿蔔","文化公園":"文化白蘿蔔","常樂公園":"常樂白蘿蔔","成功公園":"成功白蘿蔔","中正公園":"中正白蘿蔔",
+    "中壢藝術園區":"中壢白蘿蔔","龍岡森林公園":"龍岡白蘿蔔","光明公園":"光明白蘿蔔","夢幻公園":"夢幻白蘿蔔"
+  };
+  GGX.parkCoords = {
+    "復興公園":[24.97430737812043,121.24846509148746],
+    "元生公園":[24.974361904463205,121.2530170711643],
+    "常樂公園":[24.97623238419544,121.25073592285267],
+    "成功公園":[24.977787188933398,121.25806282519825],
+    "中正公園":[24.959065130381184,121.22699906567601],
+    "中壢藝術園區":[24.973134345561746,121.2331776775459],
+    "龍岡森林公園":[24.934199843085448,121.23581136752513],
+    "光明公園":[24.963638128535816,121.21605943684051],
+    "文化公園":[24.98020573977442,121.24919121349276],
+    "夢幻公園":[24.978041418783775,121.26053919991263],
+    "中壢文化園區":[24.973134345561746,121.2331776775459],
+    "夢想公園":[24.978041418783775,121.26053919991263]
+  };
+
+  function ensureMeta(u){
+    if(!u) return null;
+    u.creative = u.creative || {};
+    const c=u.creative;
+    c.weather = c.weather || {date:null,type:null,applied:false,pestResolvedDate:null};
+    c.dailyBox = c.dailyBox || {date:null,opened:false};
+    c.npc = c.npc || {date:null,line:""};
+    c.ach = Array.isArray(c.ach)?c.ach:[];
+    c.checkins = c.checkins || {date:null,parks:[]};
+    c.lastSeenDate = c.lastSeenDate || TODAY();
+    c.lastSeedProgress = typeof c.lastSeedProgress==='number' ? c.lastSeedProgress : (u.seed?.progress||0);
+    c.lastHarvestCount = typeof c.lastHarvestCount==='number' ? c.lastHarvestCount : ((u.harvested||[]).length);
+    c.dailyParkQuiz = c.dailyParkQuiz || {date:null,done:false,score:0};
+    return u;
+  }
+
+  function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+  function setDailyWeather(u){
+    const c=u.creative; const t=TODAY();
+    if(c.weather.date!==t){
+      const r=Math.random();
+      let type='sun';
+      if(r<0.08) type='rainbow';
+      else if(r<0.28) type='rain';
+      else if(r<0.38) type='pest';
+      c.weather={date:t,type,applied:false,pestResolvedDate:null};
+      c.dailyBox={date:t,opened:false};
+      c.checkins={date:t,parks:[]};
+      c.dailyParkQuiz={date:t,done:false,score:0};
+      c.npc={date:t,line:pickNpcLine(type)};
+    }
+  }
+  function pickNpcLine(weather){
+    const bank = {
+      sun:["☀️ 今天陽光很好，散步順便曬曬太陽吧！","👴 晴天最適合去公園走走，菜苗也開心。"],
+      rain:["🌧️ 下雨天補水，菜苗今天長特別快！","👵 雨天小心路滑，回家記得擦乾鞋子。"],
+      rainbow:["🌈 彩虹日！今天有幸運加成喔～","🐓 咕咕！彩虹出現，今天抽到好東西機率變高！"],
+      pest:["🐛 害蟲來了！快玩個遊戲把牠們趕走！","👴 今天要多照看菜苗，完成任務就能保住進度。"]
+    };
+    return rand(bank[weather]||bank.sun);
+  }
+
+  function applyMissedDayRisk(u){
+    const c=u.creative; const today=TODAY();
+    if(c.lastSeenDate && c.lastSeenDate!==today){
+      const last = new Date(c.lastSeenDate+'T00:00:00');
+      const now = new Date(today+'T00:00:00');
+      const diff = Math.floor((now-last)/86400000);
+      if(diff>=2 && u.seed){
+        u.seed.progress = Math.max(0,(u.seed.progress||0)-5);
+        toast('💔 昨天沒登入，菜苗進度 -5%');
+      }
+      // 若前一天是害蟲日且未處理
+      if(c.weather && c.weather.type==='pest' && c.weather.date===c.lastSeenDate && c.weather.pestResolvedDate!==c.lastSeenDate && u.seed){
+        u.seed.progress = Math.max(0,(u.seed.progress||0)-10);
+        toast('🐛 害蟲沒處理，菜苗進度 -10%');
+      }
+    }
+    c.lastSeenDate=today;
+  }
+
+  function applyWeatherBonus(u){
+    const c=u.creative, w=c.weather;
+    if(!u.seed || !w || w.date!==TODAY() || w.applied) return;
+    let delta = 0, msg="";
+    if(w.type==='sun'){delta=5;msg='☀️ 晴天加成 +5%';}
+    if(w.type==='rain'){delta=15;msg='🌧️ 下雨加成 +15%';}
+    if(w.type==='rainbow'){delta=20;msg='🌈 彩虹日加成 +20%';}
+    if(delta){
+      u.seed.progress = Math.min(100,(u.seed.progress||0)+delta);
+      u.seed.stage = u.seed.progress>=66?2:(u.seed.progress>=33?1:0);
+      w.applied = true;
+      toast(msg);
+    }
+  }
+
+  function resolvePestIfGameDone(u){
+    const c=u.creative, t=TODAY();
+    if(c.weather.type==='pest' && u.lastGame===t && c.weather.pestResolvedDate!==t){
+      c.weather.pestResolvedDate = t;
+      u.seed.progress = Math.min(100,(u.seed.progress||0)+8);
+      u.seed.stage = u.seed.progress>=66?2:(u.seed.progress>=33?1:0);
+      toast('🛡️ 你趕走害蟲了！額外 +8%');
+    }
+  }
+
+  function patchHarvest(u){
+    const c=u.creative;
+    const hc=(u.harvested||[]).length;
+    if(hc>c.lastHarvestCount){
+      for(let i=c.lastHarvestCount;i<hc;i++){
+        u.harvested[i] = '白蘿蔔';
+      }
+      celebrate();
+    }
+    c.lastHarvestCount = (u.harvested||[]).length;
+    c.lastSeedProgress = u.seed?.progress||0;
+  }
+
+  function rollVeg(u){
+    return GGX.vegPool[0];
+  }
+
+  function toast(msg){
+    if(typeof window.showToast === 'function') window.showToast(msg);
+    else console.log(msg);
+  }
+
+  function celebrateGrowth(){
+    const ov = $('gg-celebrate-overlay'); if(!ov) return;
+    ov.innerHTML = '<div class="gg-center">🌱 成長 +15%</div>';
+    for(let i=0;i<20;i++){
+      const s=document.createElement('div'); s.className='gg-confetti'; s.textContent=rand(['🌱','✨','🍃','💚']);
+      s.style.left = (Math.random()*100)+'vw';
+      s.style.animationDelay = (Math.random()*0.35)+'s';
+      s.style.fontSize = (1.2+Math.random()*1.4)+'rem';
+      ov.appendChild(s);
+    }
+    ov.classList.add('show');
+    setTimeout(()=>{ov.classList.remove('show'); ov.innerHTML='<div class="gg-center">🎉</div>';},1200);
+  }
+
+  function celebrate(){
+    const ov = $('gg-celebrate-overlay'); if(!ov) return;
+    ov.innerHTML = '<div class="gg-center">🌟 收穫！</div>';
+    for(let i=0;i<22;i++){
+      const s=document.createElement('div'); s.className='gg-confetti'; s.textContent=rand(['🎉','✨','🥕']);
+      s.style.left = (Math.random()*100)+'vw';
+      s.style.animationDelay = (Math.random()*0.4)+'s';
+      s.style.fontSize = (1.2+Math.random()*1.6)+'rem';
+      ov.appendChild(s);
+    }
+    ov.classList.add('show');
+    setTimeout(()=>{ov.classList.remove('show'); ov.innerHTML='<div class="gg-center">🎉</div>';},1300);
+  }
+
+  function unlockAchievements(u){
+    const c=u.creative, ach=new Set(c.ach||[]);
+    const t=TODAY();
+    if((u.harvested||[]).length>=1) ach.add('first_harvest');
+    if((u.harvested||[]).length>=10) ach.add('collector10');
+    if((c.checkins?.parks||[]).length>=1) ach.add('park_checkin');
+    if(c.dailyParkQuiz?.done) ach.add('park_quiz_master');
+    // streak
+    let streak = 0;
+    if(u.lastLogin===t){
+      streak = estimateStreak();
+      if(streak>=3) ach.add('login3');
+      if(streak>=7) ach.add('login7');
+    }
+    c.ach = Array.from(ach);
+  }
+  function estimateStreak(){
+    // lightweight streak from stored dates history
+    const key='ggx_login_history_v1_'+(activeId()||'');
+    const today=TODAY();
+    let arr=[]; try{arr=JSON.parse(localStorage.getItem(key)||'[]')}catch{}
+    if(arr[arr.length-1]!==today){ arr.push(today); if(arr.length>30) arr=arr.slice(-30); localStorage.setItem(key,JSON.stringify(arr));}
+    let streak=0; let d=new Date(today+'T00:00:00');
+    const set=new Set(arr);
+    while(true){
+      const s=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      if(set.has(s)){streak++; d.setDate(d.getDate()-1);} else break;
+    }
+    return streak;
+  }
+
+  
+  function renderCreativeCards(){
+    const u = loadUser(); if(!u) return;
+    ensureMeta(u);
+    const w = u.creative.weather?.type || 'sun';
+    const weatherLabel = {sun:'☀️ 晴天', rain:'🌧️ 下雨', rainbow:'🌈 彩虹日', pest:'🐛 害蟲日'}[w] || '☀️ 晴天';
+
+    // 將今日天氣移到「我的菜苗」框框右上角
+    const chip = $('gg-seed-weather-chip');
+    if(chip){
+      chip.textContent = weatherLabel;
+      chip.classList.remove('hidden');
+      if(w==='pest'){
+        chip.style.background = 'linear-gradient(135deg,#fee2e2,#fde68a)';
+        chip.style.color = '#991b1b';
+      }else if(w==='rain'){
+        chip.style.background = 'linear-gradient(135deg,#dbeafe,#e0f2fe)';
+        chip.style.color = '#1e3a8a';
+      }else if(w==='rainbow'){
+        chip.style.background = 'linear-gradient(135deg,#fce7f3,#e0e7ff,#dcfce7)';
+        chip.style.color = '#4c1d95';
+      }else{
+        chip.style.background = 'linear-gradient(135deg,#e0f2fe,#dcfce7)';
+        chip.style.color = '#065f46';
+      }
+      chip.title = (w==='pest'?'今天記得完成一個遊戲，趕走害蟲！':'今日天氣效果');
+    }
+
+    // 每日神秘箱移到設定按鈕左邊（header）
+    const boxBtn = $('gg-header-box-btn');
+    if(boxBtn){
+      const db = u.creative.dailyBox || {};
+      const opened = db.date===TODAY() && !!db.opened;
+      boxBtn.textContent = '🧰';
+      boxBtn.disabled = opened;
+      boxBtn.title = opened ? '每日神秘箱（今天已開啟）' : '每日神秘箱';
+      boxBtn.style.opacity = opened ? '.55' : '1';
+    }
+
+    // 刪除創意區塊中的成就牆 / 今日小夥伴 / 舊版神秘箱卡片
+    let host = $('gg-creative-host');
+    if(host){ host.innerHTML = ''; host.style.display = 'none'; }
+  }
+
+
+  
+  GGX._dailyBoxOpeningTimer = null;
+  GGX.closeDailyBoxModal = function(){
+    const modal = $('gg-chest-modal');
+    if(!modal) return;
+    clearTimeout(GGX._dailyBoxStartTimer);
+    clearTimeout(GGX._dailyBoxOpeningTimer);
+    modal.classList.remove('opening','ready');
+    modal.setAttribute('aria-hidden','true');
+    const result = $('gg-chest-result');
+    if(result){ result.classList.add('hidden'); result.textContent=''; }
+    qa('.gg-color-chest', modal).forEach(b=>b.disabled=false);
+    // allow close animation frame then fully hide
+    requestAnimationFrame(()=>modal.classList.remove('show'));
+  };
+
+  GGX.openDailyBox = function(){
+    const u = ensureMeta(loadUser()); if(!u) return;
+    setDailyWeather(u);
+    const db = u.creative.dailyBox;
+    if(db.date===TODAY() && db.opened){
+      toast('🎁 今天已開過寶箱');
+      saveUser(u);
+      renderCreativeCards();
+      return;
+    }
+    const modal = $('gg-chest-modal');
+    if(!modal) return;
+    const result = $('gg-chest-result');
+    if(result){ result.classList.add('hidden'); result.textContent=''; }
+    qa('.gg-color-chest', modal).forEach(b=>b.disabled=false);
+    modal.classList.add('show');
+    modal.classList.remove('ready');
+    modal.setAttribute('aria-hidden','false');
+    // 先顯示門，再打開
+    requestAnimationFrame(()=>{
+      modal.classList.remove('opening');
+      requestAnimationFrame(()=>{
+        modal.classList.add('opening');
+        clearTimeout(GGX._dailyBoxStartTimer);
+      clearTimeout(GGX._dailyBoxOpeningTimer);
+        GGX._dailyBoxOpeningTimer = setTimeout(()=>modal.classList.add('ready'), 1080);
+      });
+    });
+  };
+
+  GGX.chooseDailyChest = function(color){
+    const u = ensureMeta(loadUser()); if(!u) return;
+    setDailyWeather(u);
+    const db = u.creative.dailyBox;
+    if(db.date===TODAY() && db.opened){ toast('🎁 今天已開過寶箱'); renderCreativeCards(); return; }
+
+    const pools = {
+      purple: [
+        {label:'直接收穫衝刺 +35%', fn:()=>grow(u,35)},
+        {label:'白蘿蔔收穫 +1', fn:()=>{u.harvested=u.harvested||[]; u.harvested.push('白蘿蔔'); celebrate();}},
+        {label:'雙倍成長卡（本日）', fn:()=>{u.creative.doubleGrowthToday=TODAY();}}
+      ],
+      green: [
+        {label:'成長 +10%', fn:()=>grow(u,10)},
+        {label:'成長 +8%', fn:()=>grow(u,8)},
+        {label:'雙倍成長卡（本日）', fn:()=>{u.creative.doubleGrowthToday=TODAY();}}
+      ],
+      yellow: [
+        {label:'成長 +5%', fn:()=>grow(u,5)},
+        {label:'成長 +3%', fn:()=>grow(u,3)},
+        {label:'搞笑空箱 😂', fn:()=>{}}
+      ]
+    };
+    const p = pools[color] || pools.yellow;
+    const r = rand(p);
+    db.date=TODAY(); db.opened=true;
+    r.fn();
+
+    const result = $('gg-chest-result');
+    if(result){
+      result.textContent = `🎉 你獲得獎勵：${r.label}`;
+      result.classList.remove('hidden');
+    }
+    qa('.gg-color-chest', $('gg-chest-modal')).forEach(b=>b.disabled=true);
+
+    toast('🎁 寶箱獎勵：'+r.label);
+    saveUser(u);
+    syncVisuals();
+    renderCreativeCards();
+  };
+
+
+  function grow(u,delta){
+    if(u.creative.doubleGrowthToday===TODAY()) delta*=2;
+    u.seed = u.seed || {stage:0,progress:0};
+    u.seed.progress = Math.min(100,(u.seed.progress||0)+delta);
+    u.seed.stage = u.seed.progress>=66?2:(u.seed.progress>=33?1:0);
+  }
+
+  function syncSeedIconsToExtendedList(){
+    const wrap=$('vegetables-count'); const num=$('veg-number'); const u=loadUser();
+    if(!wrap || !u) return;
+    const harvested = u.harvested||[];
+    wrap.innerHTML='';
+    harvested.slice(0,10).forEach(name=>{
+      let icon = '🥕';
+      const v = GGX.vegPool.find(x=>x.name===name);
+      if(v) icon = v.icon;
+      
+      
+      const s=document.createElement('span'); s.textContent=icon; wrap.appendChild(s);
+    });
+    if(num) num.textContent=`${harvested.length}/10`;
+  }
+
+  function injectParkButtons(){
+    const ep=$('exercise-page'); if(!ep) return;
+    qa('#parks-list .park-card', ep).forEach(card=>{
+      if(card.querySelector('.gg-checkin-btn')) return;
+      const nameEl = q('h3', card); const parkName = nameEl ? nameEl.textContent.trim() : '公園';
+      const btn = document.createElement('button');
+      btn.className='gg-btn gg-checkin-btn';
+      btn.textContent='📍 定位打卡';
+      btn.onclick=()=>GGX.parkCheckin(parkName);
+      card.appendChild(btn);
+
+      const mini = document.createElement('button');
+      mini.className='gg-btn gg-mini-btn';
+      mini.textContent='🧩 開啟每日公園挑戰';
+      mini.onclick=()=>GGX.openParkQuiz();
+      card.appendChild(mini);
+    });
+  }
+
+  function distM(lat1,lon1,lat2,lon2){
+    const R=6371000, toRad=x=>x*Math.PI/180;
+    const dLat=toRad(lat2-lat1), dLon=toRad(lon2-lon1);
+    const a=Math.sin(dLat/2)**2+Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+    return 2*R*Math.asin(Math.sqrt(a));
+  }
+
+  GGX.parkCheckin = function(parkName){
+    const u = ensureMeta(loadUser()); if(!u) return;
+    setDailyWeather(u);
+    const c = u.creative;
+    c.checkins = c.checkins || {date:TODAY(), parks:[]};
+    if(c.checkins.date!==TODAY()) c.checkins={date:TODAY(), parks:[]};
+    if(c.checkins.parks.includes(parkName)){ toast('📍 今天已打卡過這個公園'); saveUser(u); return; }
+
+    const rewardName = GGX.parkSeeds[parkName] || (parkName+'限定種子');
+    const coords = GGX.parkCoords[parkName];
+    const allowedDistanceM = 300; // 定位驗證半徑（公尺）
+
+    if(!coords){
+      alert(`目前「${parkName}」尚未設定定位驗證座標，暫時無法打卡。\n請先為此公園補上座標後再使用。`);
+      return;
+    }
+
+    if(!navigator.geolocation){
+      alert('此裝置或瀏覽器不支援定位功能，無法進行公園打卡驗證。');
+      return;
+    }
+
+    const success = ()=> {
+      c.checkins.parks.push(parkName);
+      grow(u, 15);
+      toast(`🌳 打卡成功！菜苗成長 +15%`);
+      celebrateGrowth();
+      saveUser(u); syncVisuals();
+    };
+
+    toast('📡 正在定位，請稍候…');
+
+    navigator.geolocation.getCurrentPosition((pos)=>{
+      const lat = pos?.coords?.latitude;
+      const lon = pos?.coords?.longitude;
+      const acc = Number(pos?.coords?.accuracy || 9999);
+      const d = distM(lat, lon, coords[0], coords[1]);
+
+      // 定位精度太差時不允許打卡，避免在遠處誤判
+      if(acc > 150){
+        alert(`定位精度不足（約 ±${Math.round(acc)}m），請移動到空曠處後再試一次。`);
+        return;
+      }
+
+      if(d <= allowedDistanceM){
+        success();
+      }else{
+        alert(`你目前距離「${parkName}」約 ${Math.round(d)} 公尺，未進入打卡範圍（${allowedDistanceM} 公尺內）。\n請到達公園附近後再打卡。`);
+      }
+    }, (err)=>{
+      let msg = '無法取得定位，請確認已開啟定位權限。';
+      if(err && typeof err.code !== 'undefined'){
+        if(err.code === 1) msg = '你已拒絕定位權限，請允許定位後再打卡。';
+        else if(err.code === 2) msg = '目前無法取得位置（定位服務不可用），請稍後再試。';
+        else if(err.code === 3) msg = '定位逾時，請到空曠處再試一次。';
+      }
+      alert(msg);
+    }, {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 0
+    });
+  };
+
+  GGX.openParkQuiz = function(){
+    const u = ensureMeta(loadUser()); if(!u) return;
+    setDailyWeather(u);
+    const st = u.creative.dailyParkQuiz;
+    const modal=$('gg-park-modal'), content=$('gg-park-content');
+    modal.classList.add('show');
+    if(st.date===TODAY() && st.done){
+      content.innerHTML = `<div class="gg-card"><p>✅ 今天已完成每日公園挑戰！得分：${st.score}/3</p></div>`;
+      return;
+    }
+    const qs = shuffle([
+      {q:'散步前最適合做什麼？', opts:['先暖身伸展','立刻快跑','空腹衝刺','完全不動'], a:0},
+      {q:'在公園散步時，下列何者較安全？', opts:['穿防滑鞋','邊走邊低頭看手機','跑進草叢','逆向穿越自行車道'], a:0},
+      {q:'下雨天地面濕滑時，建議？', opts:['放慢速度','跳著走','加快步伐','穿拖鞋衝刺'], a:0},
+      {q:'走累了最好的做法是？', opts:['坐下休息補水','硬撐到底','完全不呼吸','馬上躺地上'], a:0},
+      {q:'公園解謎完成後可獲得什麼？', opts:['農場獎勵與成就進度','扣分','刪除菜苗','沒有任何變化'], a:0}
+    ]).slice(0,3);
+    let idx=0, score=0;
+    const render=()=>{
+      const qq=qs[idx];
+      content.innerHTML = `<div class="gg-card"><div style="font-weight:700;margin-bottom:.4rem">第 ${idx+1}/3 題</div><div style="font-size:1.1rem">${qq.q}</div></div>`;
+      qq.opts.forEach((txt,i)=>{
+        const b=document.createElement('button');
+        b.className='gg-qopt';
+        b.textContent=txt;
+        b.onclick=()=>{
+          qa('.gg-qopt', content).forEach(x=>x.disabled=true);
+          if(i===qq.a){score++; b.classList.add('correct'); toast('✅ 答對');}
+          else {b.classList.add('wrong'); qa('.gg-qopt', content)[qq.a]?.classList.add('correct'); toast('❌ 再試下一題');}
+          setTimeout(()=>{idx++; if(idx<qs.length) render(); else finish();},550);
+        };
+        content.appendChild(b);
+      });
+    };
+    const finish=()=>{
+      st.date=TODAY(); st.done=true; st.score=score;
+      if(score===3){
+        grow(u,12);
+        u.harvested = u.harvested || [];
+        if(Math.random()<0.2) u.harvested.push('白蘿蔔');
+        toast('🏆 全對！額外成長 +12%');
+      } else {
+        grow(u, Math.max(3, score*3));
+        toast(`🧩 完成挑戰，得分 ${score}/3`);
+      }
+      saveUser(u);
+      syncVisuals();
+      content.innerHTML = `<div class="gg-card"><p style="font-weight:700">🎉 挑戰完成</p><p>得分：${score}/3</p><p style="margin-top:.4rem;color:#374151">已發送農場獎勵與成就進度。</p></div>`;
+    };
+    render();
+  };
+  GGX.closeParkQuiz = ()=> $('gg-park-modal')?.classList.remove('show');
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ GGX.closeDailyBoxModal(); } });
+
+  function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+  function syncVisuals(){
+    renderCreativeCards();
+    syncSeedIconsToExtendedList();
+    // refresh progress text/bar if user object changed outside original UI
+    const u = loadUser();
+    if(u){
+      const pct=u.seed?.progress||0;
+      if($('growth-percent')) $('growth-percent').textContent = pct+'%';
+      if($('growth-bar')) $('growth-bar').style.width = pct+'%';
+      if($('seedling-display')){
+        $('seedling-display').textContent = pct>=66?'✨':(pct>=33?'🌿':'🌱');
+      }
+    }
+  }
+
+  function tick(){
+    const u0 = loadUser(); if(!u0) return;
+    const u = ensureMeta(u0);
+    setDailyWeather(u);
+    applyMissedDayRisk(u);
+    applyWeatherBonus(u);
+    resolvePestIfGameDone(u);
+    patchHarvest(u);
+    unlockAchievements(u);
+    saveUser(u);
+    renderCreativeCards();
+    injectParkButtons();
+    syncSeedIconsToExtendedList();
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    setTimeout(()=>{ try{tick(); syncVisuals();}catch(e){console.error(e);} }, 600);
+    setInterval(()=>{ try{tick();}catch(e){} }, 2000);
+  });
+})();
+</script>
+
 </body>
 </html>
