@@ -520,7 +520,10 @@
         <p class="text-elder font-bold text-yellow-700">🎉 恭喜！已收成10根白蘿蔔</p>
         <p class="text-elder text-yellow-600">可至鄰近蔬菜行兌換白蘿蔔獎勵</p>
        </div>
-      </div>
+       <div id="redeem-box" class="mt-4 hidden">
+        <button id="redeem-btn" onclick="redeemRadish10()" class="btn-elder bg-amber-600 text-white font-bold hover:bg-amber-700 w-full">🎁 兌換（消耗10根白蘿蔔）</button>
+       </div>
+</div>
      </div>
     </div>
     <div class="p-6">
@@ -1598,6 +1601,12 @@ updateAllUI();
     const u = loadUser();
     if (!u) return;
 
+    // Apply "Double Growth Card (Today)" if active
+    const _t = todayStr();
+    if (u.creative && u.creative.doubleGrowthToday === _t) {
+      delta *= 2;
+    }
+
     u.seed = u.seed || { stage: 0, progress: 0 };
     u.seed.progress = Math.max(0, Math.min(100, (u.seed.progress || 0) + delta));
 
@@ -1667,6 +1676,7 @@ updateAllUI();
     const vegWrap = $("vegetables-count");
     const vegNum = $("veg-number");
     const hint = $("reward-hint");
+    const redeemBox = $("redeem-box");
 
     if (sd) sd.textContent = stageIcon(u.seed?.stage ?? 0);
     const pct = u.seed?.progress ?? 0;
@@ -1689,7 +1699,31 @@ updateAllUI();
       if (harvested.length >= 10) hint.classList.remove("hidden");
       else hint.classList.add("hidden");
     }
+
+    if (redeemBox) {
+      if (harvested.length >= 10) redeemBox.classList.remove("hidden");
+      else redeemBox.classList.add("hidden");
+    }
   }
+
+  // ====== Redeem (use 10 radishes) ======
+  window.redeemRadish10 = function () {
+    const u = loadUser();
+    if (!u) return;
+
+    u.harvested = Array.isArray(u.harvested) ? u.harvested : [];
+    if (u.harvested.length < 10) {
+      showToast("⚠️ 白蘿蔔不足 10 根，無法兌換");
+      return;
+    }
+
+    // Consume 10 harvested radishes
+    u.harvested.splice(0, 10);
+    saveUser(u);
+    updateSeedUI();
+    showToast("🎁 已兌換！白蘿蔔 -10");
+  };
+
 
   // ====== Tasks UI ======
   function updateTaskUI() {
